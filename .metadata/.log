@@ -312,3 +312,6 @@ Binding(ALT+COMMAND+R,
 
 !ENTRY org.eclipse.dltk.core 2 0 2014-10-18 14:49:16.822
 !MESSAGE Error decoding problem idenfier "1073741824"
+
+!ENTRY org.eclipse.dltk.ui 2 0 2014-10-18 18:17:51.601
+!MESSAGE The 'org.eclipse.php.ui.PHPCompletionProposalComputer' proposal computer from the 'org.eclipse.php.ui' plug-in did not complete normally. The extension took too long to return from the 'computeCompletionProposals()' operation.

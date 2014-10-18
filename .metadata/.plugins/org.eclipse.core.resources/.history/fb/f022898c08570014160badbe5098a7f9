@@ -1,0 +1,33 @@
+<?php
+	//Add a new event
+	//check if logged in
+	session_start();
+	include_once("dbinfo.php");
+	$conn = mysql_connect($dbhost,$username, $password) or die(mysql_error());
+	$db = mysql_select_db($dbname, $conn) or die(mysql_error());
+
+	$user_id = $_SESSION['user_id4'];
+	$last_access=0;
+	$sql = "SELECT last_access FROM current_sessions WHERE session_id = '$_SESSION[sessionid]' AND user_id = '$_SESSION[user_id4]'";
+	$result = mysql_query($sql) or die(mysql_error());
+	while ($row = mysql_fetch_array($result))
+	{
+		$last_access = $row["last_access"];
+	}
+	$current_time=time();
+	$elapsed_time=$current_time-$last_access;
+
+	if ($elapsed_time<$expire_limit) {
+		$sql = "UPDATE current_sessions SET last_access='$current_time' WHERE session_id = '$_SESSION[sessionid]' AND user_id = '$_SESSION[user_id4]'";
+		$result = mysql_query($sql) or die(mysql_error());
+
+		mysql_close($conn);
+		header("Location:./addEventItem.php");   
+		
+	} else {
+		//otherwise
+		//choose signup or login
+         mysql_close($conn);
+		header("Location:./organizerLogin.php");   
+	}
+?>
