@@ -26,11 +26,45 @@
 		
 	if ($errors==0) {
 	//if OK, 
-		echo "no errors";
 		//add user
+		$query = "INSERT INTO users (email, password, user_category) VALUES ('$email', '$password1', '2')";
+		$result = mysql_query($query) or die(mysql_error());
+		
 		//generate session
+		$sql = "SELECT user_id FROM users WHERE email='$email' and password='$password1'";
+		$result = mysql_query($sql) or die(mysql_error());
+		
+		if (mysql_num_rows($result) == 1)
+		{
+			while ($row = mysql_fetch_array($result))
+			{
+				$user_id = $row["user_id"];
+			}
+		
+			session_start();
+		
+			unset($_SESSION['sessionid']);
+			unset($_SESSION['user_id4']);
+		
+			$sessid = session_id();
+			$_SESSION['sessionid']=$sessid;
+			$_SESSION['user_id4']=$user_id;
+		
+			$sql = "DELETE FROM current_sessions WHERE user_id = '$user_id'";
+			$result = mysql_query($sql) or die(mysql_error());
+		
+			$current_time=time();
+		
+			$sql = "INSERT INTO current_sessions (user_id, session_id, last_access) VALUES ('$user_id','$sessid','$current_time')";
+			$result = mysql_query($sql) or die(mysql_error());
+		
+			//echo "user created";
+		}
+				
+		
 		mysql_close($conn);
 		//redirect
+		header("Location:./organizerMain.php");
 	} else {
 		echo "e:$errors";
 		//otherwise redisplay info with error msg
