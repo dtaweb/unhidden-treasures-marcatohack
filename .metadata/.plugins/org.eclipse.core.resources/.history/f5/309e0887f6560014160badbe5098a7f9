@@ -1,0 +1,18 @@
+<?php
+	//check add organizer signup
+	$email = $_POST['email'];	
+	$password = $_POST['password'];
+	
+	$errors=0;
+	$valid_email="no";
+	$dupe_email="no";
+	if (empty($email)) $errors=1;
+	if (empty($password)) $errors=2;
+	if (filter_var($email, FILTER_VALIDATE_EMAIL)) { $valid_email="yes"; } else { $errors=3; }
+
+	//if OK, 
+		//add user
+		//generate session
+		//redirect
+	//otherwise redisplay info with error msg
+?>

@@ -309,3 +309,6 @@ Binding(ALT+COMMAND+R,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,cocoa,system)
+
+!ENTRY org.eclipse.dltk.core 2 0 2014-10-18 14:49:16.822
+!MESSAGE Error decoding problem idenfier "1073741824"

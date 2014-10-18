@@ -1,0 +1,11 @@
+<?php
+	//check add organizer signup
+	$email = $_POST['email'];	
+
+
+	//if OK, 
+		//add user
+		//generate session
+		//redirect
+	//otherwise redisplay info with error msg
+?>
