@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: Oct 18, 2014 at 12:32 PM
+-- Generation Time: Oct 18, 2014 at 07:41 PM
 -- Server version: 5.1.73
 -- PHP Version: 5.5.14
 
@@ -23,6 +23,26 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `current_sessions`
+--
+
+CREATE TABLE IF NOT EXISTS `current_sessions` (
+`current_id` int(10) unsigned NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `session_id` varchar(255) NOT NULL,
+  `last_access` varchar(20) NOT NULL
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+
+--
+-- Dumping data for table `current_sessions`
+--
+
+INSERT INTO `current_sessions` (`current_id`, `user_id`, `session_id`, `last_access`) VALUES
+(7, 1, '1b6ecda6a29522a084b067036fbb3069', '1413671929');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `events`
 --
 
@@ -38,8 +58,19 @@ CREATE TABLE IF NOT EXISTS `events` (
   `createdBy` int(11) NOT NULL,
   `dateCreated` varchar(20) NOT NULL,
   `timeCreated` int(11) NOT NULL,
-  `eventThemeID` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `eventThemeID` int(11) NOT NULL,
+  `eventLocation` varchar(255) NOT NULL,
+  `eventLocationGPS` varchar(50) NOT NULL,
+  `eventPicture` varchar(255) NOT NULL,
+  `eventContactInformation` longtext NOT NULL
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `events`
+--
+
+INSERT INTO `events` (`eventID`, `eventName`, `eventStartDate`, `eventEndDate`, `eventStartTime`, `eventEndTime`, `eventCategoryID`, `eventDescription`, `createdBy`, `dateCreated`, `timeCreated`, `eventThemeID`, `eventLocation`, `eventLocationGPS`, `eventPicture`, `eventContactInformation`) VALUES
+(3, 'Marcato Hackathong', 'Oct 18', 'Oct 19', '10:00AM', '8:00PM', 2, 'cdcvas', 1, '2014-10-18', 1413670062, 2, '53 Prince', '123', '', 'dscv sv lsd');
 
 -- --------------------------------------------------------
 
@@ -50,7 +81,19 @@ CREATE TABLE IF NOT EXISTS `events` (
 CREATE TABLE IF NOT EXISTS `event_categories` (
 `eCategoryID` int(10) unsigned NOT NULL,
   `eCategoryType` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `event_categories`
+--
+
+INSERT INTO `event_categories` (`eCategoryID`, `eCategoryType`) VALUES
+(1, 'Farmers Market'),
+(2, 'Craft Show'),
+(3, 'Yard Sale'),
+(4, 'Estate Sale'),
+(5, 'Flea Market'),
+(6, 'Small Business');
 
 -- --------------------------------------------------------
 
@@ -60,10 +103,13 @@ CREATE TABLE IF NOT EXISTS `event_categories` (
 
 CREATE TABLE IF NOT EXISTS `event_items` (
 `eItemID` int(10) unsigned NOT NULL,
-  `userID` int(11) NOT NULL,
+  `eventID` int(11) NOT NULL,
   `eItemDescription` varchar(155) NOT NULL,
   `eItemPriceMin` varchar(10) NOT NULL,
-  `eItemPriceMax` varchar(10) NOT NULL
+  `eItemPriceMax` varchar(10) NOT NULL,
+  `vendorName` varchar(255) NOT NULL,
+  `vendorContact` varchar(255) NOT NULL,
+  `tableNumber` varchar(50) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -75,7 +121,16 @@ CREATE TABLE IF NOT EXISTS `event_items` (
 CREATE TABLE IF NOT EXISTS `event_themes` (
 `eThemeID` int(10) unsigned NOT NULL,
   `eTheme` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `event_themes`
+--
+
+INSERT INTO `event_themes` (`eThemeID`, `eTheme`) VALUES
+(1, 'Recurring Event'),
+(2, 'One Time Event'),
+(3, 'Holiday Special');
 
 -- --------------------------------------------------------
 
@@ -85,8 +140,22 @@ CREATE TABLE IF NOT EXISTS `event_themes` (
 
 CREATE TABLE IF NOT EXISTS `item_categories` (
 `iCategoryID` int(10) unsigned NOT NULL,
-  `iCategory` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `iCategory` varchar(50) NOT NULL
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+
+--
+-- Dumping data for table `item_categories`
+--
+
+INSERT INTO `item_categories` (`iCategoryID`, `iCategory`) VALUES
+(1, 'Craft'),
+(2, 'Food'),
+(3, 'Apparel'),
+(4, 'Technology/Electronics'),
+(5, 'Antiques'),
+(6, 'Sport'),
+(7, 'Entertainment'),
+(8, 'Collectables');
 
 -- --------------------------------------------------------
 
@@ -96,7 +165,7 @@ CREATE TABLE IF NOT EXISTS `item_categories` (
 
 CREATE TABLE IF NOT EXISTS `item_interest` (
 `iInterestID` int(10) unsigned NOT NULL,
-  `iInterest` int(11) NOT NULL
+  `iInterest` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -131,12 +200,20 @@ CREATE TABLE IF NOT EXISTS `lookup_item_event_interest` (
 
 CREATE TABLE IF NOT EXISTS `users` (
 `user_id` int(10) unsigned NOT NULL,
-  `username` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `user_category` int(11) NOT NULL,
   `password` varchar(255) NOT NULL,
   `active` tinyint(4) NOT NULL,
   `rating` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_id`, `email`, `user_category`, `password`, `active`, `rating`) VALUES
+(1, 'darren.t.andrews@gmail.com', 2, '123', 0, 0),
+(2, 'me@here.com', 2, '234', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -147,11 +224,25 @@ CREATE TABLE IF NOT EXISTS `users` (
 CREATE TABLE IF NOT EXISTS `user_categories` (
 `uCategoryID` int(10) unsigned NOT NULL,
   `uCategoryName` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `user_categories`
+--
+
+INSERT INTO `user_categories` (`uCategoryID`, `uCategoryName`) VALUES
+(1, 'Single Vendor Event'),
+(2, 'Event Organizer (Multiple Vendors)');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `current_sessions`
+--
+ALTER TABLE `current_sessions`
+ ADD PRIMARY KEY (`current_id`);
 
 --
 -- Indexes for table `events`
@@ -218,15 +309,20 @@ ALTER TABLE `user_categories`
 --
 
 --
+-- AUTO_INCREMENT for table `current_sessions`
+--
+ALTER TABLE `current_sessions`
+MODIFY `current_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-MODIFY `eventID` int(11) unsigned NOT NULL AUTO_INCREMENT;
+MODIFY `eventID` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `event_categories`
 --
 ALTER TABLE `event_categories`
-MODIFY `eCategoryID` int(10) unsigned NOT NULL AUTO_INCREMENT;
+MODIFY `eCategoryID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `event_items`
 --
@@ -236,12 +332,12 @@ MODIFY `eItemID` int(10) unsigned NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `event_themes`
 --
 ALTER TABLE `event_themes`
-MODIFY `eThemeID` int(10) unsigned NOT NULL AUTO_INCREMENT;
+MODIFY `eThemeID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `item_categories`
 --
 ALTER TABLE `item_categories`
-MODIFY `iCategoryID` int(10) unsigned NOT NULL AUTO_INCREMENT;
+MODIFY `iCategoryID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `item_interest`
 --
@@ -261,12 +357,12 @@ MODIFY `itemInterestID` int(11) unsigned NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-MODIFY `user_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+MODIFY `user_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `user_categories`
 --
 ALTER TABLE `user_categories`
-MODIFY `uCategoryID` int(10) unsigned NOT NULL AUTO_INCREMENT;
+MODIFY `uCategoryID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

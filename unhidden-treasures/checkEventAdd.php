@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	date_default_timezone_set('UTC');
 	include_once("dbinfo.php");
 	$conn = mysql_connect($dbhost,$username, $password) or die(mysql_error());
 	$db = mysql_select_db($dbname, $conn) or die(mysql_error());
@@ -105,11 +106,31 @@ Add Event Information below (check errors below - items with <font color="red"><
 	<input type="submit" name="submit" value="submit" />
 </form>
 <?php 			
+			mysql_close($conn);
 		} else {
 		
-			echo "no errors";
-				mysql_close($conn);
-		
+			$sql = "INSERT INTO events 
+			(eventName, eventStartDate, eventEndDate, eventStartTime, eventEndTime,
+			 eventCategoryID, eventDescription, createdBy, dateCreated, timeCreated, 
+			eventThemeID, eventLocation, eventLocationGPS, eventContactInformation)
+			VALUES 
+			('$event_name', '$start_date', '$end_date', '$start_time', '$end_time',
+			 '$category_id', '$description', '$user_id', '".date("Y-m-d")."', '".time()."', 
+			'$theme', '$location', '$gps', '$contact')";
+			//echo $sql;
+			$result = mysql_query($sql) or die(mysql_error());
+			
+			$sql = "SELECT eventID FROM events WHERE eventName = '$event_name' AND createdBy = '$user_id' AND eventStartDate='$start_date'";
+			$result = mysql_query($sql) or die(mysql_error());
+			while ($row = mysql_fetch_array($result))
+			{
+				$eventID = $row["eventID"];
+			}
+				
+			mysql_close($conn);
+			header("Location:./eventVendors.php?event=$eventID");
+				
+			
 		}
 		
 	} else {
