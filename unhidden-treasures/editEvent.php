@@ -31,9 +31,30 @@
 			$eventName = $row["eventName"];
 		}
 		
-		echo "<a href=\"addEventVendor.php?event=$event_id\">Add Vendor to $eventName</a><br /><br /><br />";
 ?>
-redo
+<html>
+<head>
+<title>Hackathon_App</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel='stylesheet' href='./style.css' type='text/css' media='all' />
+	<link href='http://fonts.googleapis.com/css?family=Signika' rel='stylesheet' type='text/css'>
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<div id="main-layout">
+	<div id="banner"><img src="images/banner.png" width="768" height="296" alt=""></div>
+	<div id="content">
+		<div id="choose-manage-event-title"><p><?php echo "Manage $eventName"; ?></p></div>		
+		<div id="choose-event-single-vendor"><img src="images/edit-event.png"></a></div>
+		<div id="choose-event-multiple-vendor">
+<?php 
+		echo "<a href=\"addEventVendor.php?event=$event_id\"><img src=\"images/add-vendor.png\"></a>";
+?>
+		</div>
+		<div id="choose-event-footer"><img src="images/my-event-footer.png"></div>
+	</div>
+</div>
+</body>
+</html>
 <?php		
 		
 		} else {

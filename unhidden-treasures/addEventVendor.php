@@ -35,7 +35,7 @@
 			echo "<H3>Table $tableNumber successfully added to event</H3>";
 				
 		}
-?>
+?><div style="overflow:hidden"><div style="float:left">
 Add Event Information below (fields with <font color="red"><B>*</B></font> are required): <br /><br >
 <form action="./checkEventVendorAdd.php" method="POST"><input type="hidden" name="event_id" value="<?php echo "".stripslashes($event_id).""; ?>" />
 Vendor Name
@@ -64,13 +64,15 @@ Vendor Name
 	}	
 ?>
 	<br /><br />
-	Price (Min)
+<?php /*	Price (Min)
 	: <input type="text" name="price_min" value="<?php echo "".stripslashes($price_min).""; ?>" /><br />
 	Price (Max)
 	: <input type="text" name="price_max" value="<?php echo "".stripslashes($price_max).""; ?>" /><br /><br />
+*/ ?>
 	<input type="submit" name="submit" value="submit" />
 </form>
-	
+</div><div style="float:left"><img src="images/addVendorMockup.jpg"></div>
+</div>
 <?php 		
 		
 	} else {

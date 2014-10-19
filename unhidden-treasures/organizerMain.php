@@ -31,9 +31,25 @@
 	<div id="banner"><img src="images/banner.png" width="768" height="296" alt=""></div>
 	<div id="content">
 		<div id="organizer-home"><img src="images/organizer-home.png"></div>
-		<div id="organizer-edit"><img src="images/organizer-edit.png"></div>		
-		<div id="organizer-new-event"><img src="images/organizer-new-event.png"></div>		
-		<div id="organizer-existing-event"><img src="images/organizer-existing-event.png"></div>		
+		<div id="organizer-edit"><a href="editOrganizer.php"><img src="images/organizer-edit.png"></a></div>		
+		<div id="organizer-new-event"><a href="addEvent.php"><img src="images/organizer-new-event.png"></a></div>		
+		<div id="organizer-existing-event">
+<?php 
+$sql = "SELECT eventID, eventName, eventStartDate, eventEndDate FROM events WHERE createdBy = '$user_id' order by eventID DESC LIMIT 1";
+$result = mysql_query($sql) or die(mysql_error());
+while ($row = mysql_fetch_array($result))
+{
+	$eventID = $row["eventID"];
+	$eventName = $row["eventName"];
+	$eventStartDate = $row["eventStartDate"];
+	$eventEndDate = $row["eventEndDate"];
+}
+if ($eventID!="") {
+	echo "<a href=\"editEvent.php?eid=$eventID\"><img src=\"images/organizer-existing-event.png\"></a>";
+} else {
+	echo "<img src=\"images/organizer-existing-event-noshow.png\">";
+}	
+?>		</div>		
 	</div>
 </div>
 </body>
@@ -41,7 +57,7 @@
 <?php		
 
 	//if logged in, choices are:
-
+/*
 		//edit profile
 		echo "<a href=\"editOrganizer.php\">Edit Profile</a><br /><br /><br />";
 		//landing page for organizer
@@ -58,7 +74,7 @@
 			$eventEndDate = $row["eventEndDate"];
 			echo "<a href=\"editEvent.php?eid=$eventID\">Edit: $eventName [$eventStartDate]</a><br /><br /><br />";
 		}
-		
+*/				
 	} else {	
 	//otherwise
 ?>

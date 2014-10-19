@@ -1,0 +1,213 @@
+@CHARSET "UTF-8";
+body {
+	background-color:#521E16;
+}
+#main-layout {
+	width:768px;
+	min-height:1024px;
+	clear:both;
+	margin-left:auto;
+	margin-right:auto;
+}
+#banner {
+	width:768px;
+	min-height:296px;
+	clear:both;
+}
+#content {
+	width:768px;
+	min-height:728px;
+	clear:both;
+	overflow:hidden;
+	background-image: url('images/main_background.png');
+}
+#home-looking {
+	width:768px;
+	height:171px;
+	
+}
+#choose-event-title {
+	width:768px;
+	height:171px;
+	
+}
+#find-treasure {
+	width:768px;
+	height:159px;	
+}
+#choose-event-single-vendor {
+	width:768px;
+	height:159px;	
+}
+#sell-treasure {
+	width:768px;
+	height: 161px;
+}
+#choose-event-multiple-vendor {
+	width:768px;
+	height: 161px;
+}
+#home-spacer {
+	width:768px;
+	height: 94;
+}
+#home-footer {
+	width:768px;
+	overflow:hidden;
+	height: 143px;
+}
+#choose-event-footer {
+	width:768px;
+	height: 237px;
+}
+#footer-1 {
+	width:150px;
+	height: 143px;
+	float:left;
+}
+#footer-2 {
+	width:163px;
+	height: 143px;
+	float:left;
+}
+#footer-3 {
+	width:166px;
+	height: 143px;
+	float:left;
+}
+#footer-4 {
+	width:120px;
+	height: 143px;
+	float:left;
+}
+#footer-5 {
+	width:169px;
+	height: 143px;
+	float:left;
+}
+
+#organizer-login-register {
+	width:768px;
+	height:171px;
+	clear:both;
+	overflow:hidden;
+}
+
+#organizer-login {
+	width:355px;
+	height:171px;
+	float:left;
+}
+
+#organizer-register {
+	width:413px;
+	height:171px;
+	float:left;
+}
+
+#organizer-email {
+	width:768px;
+	height:159px;
+	clear:both;
+	background-image: url('images/organizer-email.png');
+}
+
+#organizer-email-input {
+	margin-left: 300px;
+	margin-top: 76px;
+	height: 50px;
+	width: 300px;
+	font-size:20px;
+}
+
+#organizer-password {
+	width:768px;
+	height:161px;
+	clear:both;
+	background-image: url('images/organizer-password.png');
+}
+
+#organizer-password-input {
+	margin-left: 350px;
+	margin-top: 76px;
+	height: 50px;
+	width: 250px;
+	font-size:20px;
+}
+
+#organizer-password-retype {
+	width:768px;
+	height:131px;
+	clear:both;
+	background-image: url('images/organizer-password-retype.png');
+}
+
+#organizer-password-retype-input {
+	margin-left: 350px;
+	margin-top: 50px;
+	height: 50px;
+	width: 250px;
+	font-size:20px;
+}
+
+#organizer-submit-footer {
+	width:768px;
+	height:106px;
+	overflow:hidden;
+	clear:both;
+}
+
+#organizer-submit-pad {
+	width:381px;
+	height:106px;
+	float:left;
+}
+
+#organizer-submit {
+	width:387px;
+	height:106px;
+	float:left;
+}
+
+#organizer-submit-footer2 {
+	width:768px;
+	height:237px;
+	overflow:hidden;
+	clear:both;
+}
+
+#organizer-submit-pad2 {
+	width:381px;
+	height:237px;
+	float:left;
+}
+
+#organizer-submit2 {
+	width:387px;
+	height:237px;
+	float:left;
+}
+
+#organizer-home {
+	width:768px;
+	height:172px;
+	clear:both;
+}
+
+#organizer-edit {
+	height:159px;
+	width:768px;
+	clear:both;
+}
+
+#organizer-new-event {
+	height:161px;
+	width:768px;
+	clear:both;
+}
+
+#organizer-existing-event {
+	height:237px;
+	width:768px;
+	clear:both;
+}

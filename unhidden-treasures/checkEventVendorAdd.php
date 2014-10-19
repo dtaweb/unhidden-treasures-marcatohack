@@ -72,10 +72,12 @@ Vendor Name
 	}	
 ?>
 	<br /><br />
+<?php /*
 	Price (Min)
 	: <input type="text" name="price_min" value="<?php echo "".stripslashes($price_min).""; ?>" /><br />
 	Price (Max)
 	: <input type="text" name="price_max" value="<?php echo "".stripslashes($price_max).""; ?>" /><br /><br />
+*/ ?>
 	<input type="submit" name="submit" value="submit" />
 </form>
 <?php
