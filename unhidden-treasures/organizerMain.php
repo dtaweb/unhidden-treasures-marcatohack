@@ -20,6 +20,24 @@
 		$sql = "UPDATE current_sessions SET last_access='$current_time' WHERE session_id = '$_SESSION[sessionid]' AND user_id = '$_SESSION[user_id4]'";
 		$result = mysql_query($sql) or die(mysql_error());
 ?>
+<html>
+<head>
+<title>Hackathon_App</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel='stylesheet' href='./style.css' type='text/css' media='all' />
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<div id="main-layout">
+	<div id="banner"><img src="images/banner.png" width="768" height="296" alt=""></div>
+	<div id="content">
+		<div id="organizer-home"><img src="images/organizer-home.png"></div>
+		<div id="organizer-edit"><img src="images/organizer-edit.png"></div>		
+		<div id="organizer-new-event"><img src="images/organizer-new-event.png"></div>		
+		<div id="organizer-existing-event"><img src="images/organizer-existing-event.png"></div>		
+	</div>
+</div>
+</body>
+</html>
 <?php		
 
 	//if logged in, choices are:
@@ -53,19 +71,20 @@
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 <div id="main-layout">
 	<div id="banner"><img src="images/banner.png" width="768" height="296" alt=""></div>
+<form action="./authenticateOrganizer.php" method="POST">
 	<div id="content">
 		<div id="organizer-login-register">
 			<div id="organizer-login"><img src="images/organizer-login.png"></div>
 			<div id="organizer-register"><a href="organizerSignup.php"><img src="images/organizer-register.png"></a></div>
 		</div>
-		<div id="organizer-email"></div>		
-		<div id="organizer-password"></div>		
-		<div id="organizer-password-retype"></div>		
-		<div id="organizer-submit-footer">
-			<div id="organizer-submit-pad"></div>
-			<div id="organizer-submit"><img src="images/organizer-submit.png"></div>
+		<div id="organizer-email"><input id="organizer-email-input" type="text" name="email" value="" /></div>		
+		<div id="organizer-password"><input id="organizer-password-input" type="password" name="password1" value="" /></div>		
+		<div id="organizer-submit-footer2">
+			<div id="organizer-submit-pad2"></div>
+			<div id="organizer-submit2"><input type="image" src="images/organizer-submit2.png"></div>
 		</div>	
 	</div>
+</form>
 </div>
 </body>
 </html>
