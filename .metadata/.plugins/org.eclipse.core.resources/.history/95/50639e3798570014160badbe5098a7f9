@@ -1,0 +1,19 @@
+@CHARSET "UTF-8";
+#main-layout {
+	width:768px
+	min-height:1024px;
+	clear:both;
+	margin-left:auto;
+	margin-right:auto;
+}
+#banner {
+	width:768px
+	min-height:296px;
+	clear:both;
+}
+#content {
+	width:768px
+	min-height:728px;
+	clear:both;
+	overflow:hidden;
+}

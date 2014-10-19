@@ -1,0 +1,24 @@
+<?php
+	//Portal Page
+	//Presents two options: (A) See Events and (B) List New Event
+?>	
+<html>
+<head>
+<title>Hackathon_App</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel='stylesheet' href='./style.css' type='text/css' media='all' />
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<div id="main-layout">
+	<div id="banner"><img src="images/spacer.gif" width="768" height="296" alt=""></div>
+	<div id="content"><img src="images/main_background.png" width="768" height="728" alt="">
+	</div>
+</div>
+</body>
+</html>
+<!-- 	<a href="./eventList.php">Click here to plunder</a>
+	<br /><br /><br />
+	<a href="./chooseEventType.php">Let loose the dogs of war</a>
+-->
+<?php
+?>

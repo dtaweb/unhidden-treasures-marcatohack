@@ -19,7 +19,8 @@
 	if ($elapsed_time<$expire_limit) {
 		$sql = "UPDATE current_sessions SET last_access='$current_time' WHERE session_id = '$_SESSION[sessionid]' AND user_id = '$_SESSION[user_id4]'";
 		$result = mysql_query($sql) or die(mysql_error());
-		
+?>
+<?php		
 
 	//if logged in, choices are:
 
@@ -42,8 +43,32 @@
 		
 	} else {	
 	//otherwise
-		//choose signup or login
-		echo "<a href=\"organizerLogin.php\">Organizer Log In</a><br /><br /><br />";
-		echo "<a href=\"organizerSignup.php\">Organizer Signup</a><br /><br /><br />";
+?>
+<html>
+<head>
+<title>Hackathon_App</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel='stylesheet' href='./style.css' type='text/css' media='all' />
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<div id="main-layout">
+	<div id="banner"><img src="images/banner.png" width="768" height="296" alt=""></div>
+	<div id="content">
+		<div id="organizer-login-register">
+			<div id="organizer-login"><img src="images/organizer-login.png"></div>
+			<div id="organizer-register"><a href="organizerSignup.php"><img src="images/organizer-register.png"></a></div>
+		</div>
+		<div id="organizer-email"></div>		
+		<div id="organizer-password"></div>		
+		<div id="organizer-password-retype"></div>		
+		<div id="organizer-submit-footer">
+			<div id="organizer-submit-pad"></div>
+			<div id="organizer-submit"><img src="images/organizer-submit.png"></div>
+		</div>	
+	</div>
+</div>
+</body>
+</html>
+		<?php		
 	}
 ?>
