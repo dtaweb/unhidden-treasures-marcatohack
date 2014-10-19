@@ -37,7 +37,7 @@
 			$eventName = $row["eventName"];
 			$eventStartDate = $row["eventStartDate"];
 			$eventEndDate = $row["eventEndDate"];
-			echo "<a href=\"editEvent.php?eid=$eventId\">Edit: $eventName [$eventStartDate]</a><br /><br /><br />";
+			echo "<a href=\"editEvent.php?eid=$eventID\">Edit: $eventName [$eventStartDate]</a><br /><br /><br />";
 		}
 		
 	} else {	

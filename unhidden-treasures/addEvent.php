@@ -71,6 +71,6 @@ Add Event Information below (items with <font color="red"><B>*</B></font> are re
 		//otherwise
 		//choose signup or login
         mysql_close($conn);
-		header("Location:./organizerLogin.php");   
+		header("Location:./chooseEventType.php");   
 	}
 ?>

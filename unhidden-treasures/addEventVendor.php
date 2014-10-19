@@ -1,4 +1,5 @@
 <?php
+
 	session_start();
 	date_default_timezone_set('UTC');
 	include_once("dbinfo.php");
@@ -22,8 +23,20 @@
 		
 		//add a new vendor to the selected event
 		$event_id=$_GET['event'];
+		$eItemID=$_GET['eitem'];
+		
+		if (isset($eItemID)) {
+			$sql = "SELECT tableNumber FROM event_items WHERE eventID = '$event_id' AND eItemID = '$eItemID'";
+			$result = mysql_query($sql) or die(mysql_error());
+			while ($row = mysql_fetch_array($result))
+			{
+				$tableNumber = $row["tableNumber"];
+			}
+			echo "<H3>Table $tableNumber successfully added to event</H3>";
+				
+		}
 ?>
-Add Event Information below (check errors below - items with <font color="red"><B>*</B></font> are required): <br /><br >
+Add Event Information below (fields with <font color="red"><B>*</B></font> are required): <br /><br >
 <form action="./checkEventVendorAdd.php" method="POST"><input type="hidden" name="event_id" value="<?php echo "".stripslashes($event_id).""; ?>" />
 Vendor Name
 	: <input type="text" name="vendor_name" value="<?php echo "".stripslashes($vendor_name).""; ?>" /><br />
@@ -34,7 +47,23 @@ Vendor Name
 	: <input type="text" name="table_info" value="<?php echo "".stripslashes($table_info).""; ?>" /><br />
 	Item Description
 	<?php if (empty($description)) echo "<font color=\"red\"><B>*</B></font>"; ?>
-	: <textarea name="description"><?php echo "".stripslashes($description).""; ?></textarea><br />
+	: <textarea name="description"><?php echo "".stripslashes($description).""; ?></textarea><br /><br />
+	Category<font color="red"><B>*</B></font>:<br /> 
+<?php 
+	$sql = "SELECT iCategoryID, iCategory FROM item_categories order by iCategory ASC";
+	$result = mysql_query($sql) or die(mysql_error());
+	$i=0;
+	while ($row = mysql_fetch_array($result))
+	{
+		$i++;
+		$iCategoryID = $row["iCategoryID"];
+		$iCategoryType = $row["iCategory"];
+		echo "<input type=\"checkbox\" name=\"categories[]\" value=\"$iCategoryID\" ";
+		echo " />$iCategoryType &nbsp;&nbsp;&nbsp;";
+		if ($i!=0 && $i%3==0) echo "<br />";
+	}	
+?>
+	<br /><br />
 	Price (Min)
 	: <input type="text" name="price_min" value="<?php echo "".stripslashes($price_min).""; ?>" /><br />
 	Price (Max)
@@ -48,7 +77,7 @@ Vendor Name
 		//otherwise
 		//choose signup or login
 		mysql_close($conn);
-		header("Location:./organizerLogin.php");
+		header("Location:./chooseEventType.php");
 	}
 		
 ?>

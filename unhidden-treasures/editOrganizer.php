@@ -44,6 +44,6 @@ Edit information below: <br /><br >
 		//otherwise
 		//choose signup or login
          mysql_close($conn);
-		header("Location:./organizerLogin.php");   
+		header("Location:./chooseEventType.php");   
 	}
 ?>

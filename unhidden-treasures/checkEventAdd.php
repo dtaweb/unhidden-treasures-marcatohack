@@ -137,6 +137,6 @@ Add Event Information below (check errors below - items with <font color="red"><
 		//otherwise
 		//choose signup or login
         mysql_close($conn);
-		header("Location:./organizerLogin.php");   
+		header("Location:./chooseEventType.php");   
 	}
 ?>

@@ -17,7 +17,7 @@
 		$uCategoryID = $row['uCategoryID'];
 		$uCategoryName = $row['uCategoryName'];
 		if ($uCategoryID==1) {
-			echo "<a href=\"eventVendors.php?oid=0\">$uCategoryName</a><br /><br /><br />";
+			echo "<a href=\"addEventVendor.php?oid=0\">$uCategoryName</a><br /><br /><br />";
 		}
 		if ($uCategoryID==2) {
 			echo "<a href=\"organizerMain.php\">$uCategoryName</a><br /><br /><br />";
